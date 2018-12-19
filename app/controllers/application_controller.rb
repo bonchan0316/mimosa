@@ -12,13 +12,12 @@ class ApplicationController < ActionController::Base
     end
 
   def store_location
-    if (request.fullpath != new_user_registration_path &&
-        request.fullpath != new_user_session_path &&
-        # request.fullpath != "/users/password" &&
-        request.fullpath !~ Regexp.new("\\A/users/password.*\\z") &&
-        !request.xhr?)
-      session[:previous_url] = request.fullpath
+    if request.fullpath.in?( [new_user_registration_path, new_user_session_path] ) ||
+      request.fullpath =~ Regexp.new("\\A/users/password.*\\z") ||
+      request.xhr?
+      return
     end
+    session[:previous_url] = request.fullpath
   end
 
   def after_sign_in_path_for(resource)
@@ -28,5 +27,5 @@ class ApplicationController < ActionController::Base
       session[:previous_url] || root_path
     end
   end
-  
+
 end
