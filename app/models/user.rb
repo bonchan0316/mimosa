@@ -18,7 +18,8 @@ class User < ApplicationRecord
     result = update_attributes(params, *options)
     clean_up_passwords
     result
-    
+
   end
 
+  belongs_to :family, through: :family_users
 end

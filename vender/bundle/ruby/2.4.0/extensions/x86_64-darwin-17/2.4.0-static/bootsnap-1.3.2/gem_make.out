@@ -1,0 +1,15 @@
+current directory: /Users/igarashitaro/mimosa/vender/bundle/ruby/2.4.0/gems/bootsnap-1.3.2/ext/bootsnap
+/Users/igarashitaro/.rbenv/versions/2.4.1/bin/ruby -r ./siteconf20181219-42883-h0rjcd.rb extconf.rb
+creating Makefile
+
+current directory: /Users/igarashitaro/mimosa/vender/bundle/ruby/2.4.0/gems/bootsnap-1.3.2/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/igarashitaro/mimosa/vender/bundle/ruby/2.4.0/gems/bootsnap-1.3.2/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/igarashitaro/mimosa/vender/bundle/ruby/2.4.0/gems/bootsnap-1.3.2/ext/bootsnap
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bootsnap.bundle ./.gem.20181219-42883-ay5j3z/bootsnap
