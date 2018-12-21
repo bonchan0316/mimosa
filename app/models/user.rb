@@ -21,5 +21,7 @@ class User < ApplicationRecord
 
   end
 
-  belongs_to :family, through: :family_users
+  has_one :family, through: :family_user
+  has_one :family_user
+  accepts_nested_attributes_for :family_user
 end
