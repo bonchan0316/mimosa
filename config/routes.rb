@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'families/new'
   get 'users/index'
   get 'users/show'
   get 'top/index'
@@ -10,7 +11,8 @@ Rails.application.routes.draw do
   }
 
   resources :users, :only =>  [:index, :show]
-
+  resources :families
+  
   root to: "top#index"
 
 end
