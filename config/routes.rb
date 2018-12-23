@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'families/new'
   get 'users/index'
   get 'users/show'
+  get 'families/new'
   get 'top/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users, :controllers => {
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :users, :only =>  [:index, :show]
   resources :families
-  
+
   root to: "top#index"
 
 end
