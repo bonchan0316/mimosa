@@ -5,12 +5,15 @@ class FamiliesController < ApplicationController
 
   def create
     @family = Family.new(family_params)
+    @family.family_email = current_user.email
+
     if @family.save
       redirect_to root_path, success: '登録が完了しました' #Rails04 redirect_toを参照
     else
       flash.now[:danger] = "登録に失敗しました"
       render :new
     end
+
   end
 
   def index
@@ -23,7 +26,7 @@ class FamiliesController < ApplicationController
 
   private
   def family_params
-    params.require(:family).permit(:family_name)
+    params.require(:family).permit(:family_name, :family_email)
   end
 
 end

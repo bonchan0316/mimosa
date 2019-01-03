@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, :configure_permitted_parameters, if: :devise_controller?
   after_action :store_location
 
+  helper_method :logged_in?
+
   protected
     def configure_permitted_parameters
       added_attrs = [ :user_name, :email, :password, :password_confirmation ]
@@ -26,6 +28,10 @@ class ApplicationController < ActionController::Base
     else
       session[:previous_url] || root_path
     end
+  end
+
+  def logged_in?
+    !current_user.nil?
   end
 
   add_flash_types :success, :info, :warning, :danger
