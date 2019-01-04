@@ -13,7 +13,6 @@ class FamiliesController < ApplicationController
       flash.now[:danger] = "登録に失敗しました"
       render :new
     end
-
   end
 
   def index
@@ -21,7 +20,7 @@ class FamiliesController < ApplicationController
   end
 
   def show
-    @family = Family.find_by(params[:id])
+    @family = Family.find_by(params[:family_email])
   end
 
   private

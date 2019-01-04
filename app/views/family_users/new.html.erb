@@ -1,0 +1,26 @@
+<div class="users-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 users-new-container">
+        <h1 class="text-center text-white">Family_user create</h1>
+
+        <%= form_tag({controller: :families, action: :show},
+        {method: :get}) do %>
+
+          <div class="field">
+            <%= label_tag :family_email %><br />
+            <%= text_field_tag :family_email %>
+          </div>
+
+          <% if logged_in? %>
+            <div class="actions">
+              <%= submit_tag "Familyに参加" %>
+            </div>
+          <% end %>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

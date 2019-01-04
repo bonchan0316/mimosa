@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
+  get 'family_users/new'
+  get 'families/new'
   get 'users/index'
   get 'users/show'
-  get 'families/new'
   get 'top/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   devise_for :users, :controllers => {
@@ -10,8 +11,11 @@ Rails.application.routes.draw do
     :passwords     => "users/passwords"
   }
 
-  resources :users, :only =>  [:index, :show]
-  resources :families
+  resources :users, only: [:index, :show]
+  resources :families, except: [:show]
+  resource :families, only: [:show]
+  resources :family_users
+
 
   root to: "top#index"
 
