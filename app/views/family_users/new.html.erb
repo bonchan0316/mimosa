@@ -4,8 +4,8 @@
       <div class="col-md-offset-4 col-md-4 users-new-container">
         <h1 class="text-center text-white">Family_user create</h1>
 
-        <%= form_tag({controller: :families, action: :show},
-        {method: :get}) do %>
+        <%= form_tag({controller: :family_users, action: :create},
+        {method: :post}) do %>
 
           <div class="field">
             <%= label_tag :family_email %><br />

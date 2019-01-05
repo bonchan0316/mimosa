@@ -12,10 +12,8 @@ Rails.application.routes.draw do
   }
 
   resources :users, only: [:index, :show]
-  resources :families, except: [:show]
-  resource :families, only: [:show]
+  resources :families
   resources :family_users
-
 
   root to: "top#index"
 

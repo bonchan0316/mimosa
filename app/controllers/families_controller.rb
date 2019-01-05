@@ -20,7 +20,7 @@ class FamiliesController < ApplicationController
   end
 
   def show
-    @family = Family.find_by(params[:family_email])
+    @family = Family.find_by(params[:id])
   end
 
   private
