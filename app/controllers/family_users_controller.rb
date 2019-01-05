@@ -17,7 +17,7 @@ class FamilyUsersController < ApplicationController
       @family_user.family_administrator = 1
 
       if @family_user.save
-        redirect_to root_path, success: '登録が完了しました' #Rails04 redirect_toを参照
+        redirect_to root_path, success: '登録が完了しました'
       else
         flash.now[:danger] = "登録に失敗しました"
         render :new
