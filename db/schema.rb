@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_21_032951) do
+ActiveRecord::Schema.define(version: 2019_01_06_031138) do
 
   create_table "families", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "family_name"
@@ -28,6 +28,34 @@ ActiveRecord::Schema.define(version: 2018_12_21_032951) do
     t.boolean "family_administrator", default: false
     t.index ["family_id"], name: "index_family_users_on_family_id"
     t.index ["user_id"], name: "index_family_users_on_user_id"
+  end
+
+  create_table "report_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "report_id"
+    t.bigint "report_item_id"
+    t.text "report_body", null: false
+    t.index ["report_id"], name: "index_report_details_on_report_id"
+    t.index ["report_item_id"], name: "index_report_details_on_report_item_id"
+  end
+
+  create_table "report_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "report_item_name", null: false
+  end
+
+  create_table "report_template_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "report_template_id"
+    t.bigint "report_item_id"
+    t.index ["report_item_id"], name: "index_report_template_items_on_report_item_id"
+    t.index ["report_template_id"], name: "index_report_template_items_on_report_template_id"
+  end
+
+  create_table "report_templates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "report_template_name", null: false
+  end
+
+  create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -54,4 +82,9 @@ ActiveRecord::Schema.define(version: 2018_12_21_032951) do
 
   add_foreign_key "family_users", "families"
   add_foreign_key "family_users", "users"
+  add_foreign_key "report_details", "report_items"
+  add_foreign_key "report_details", "reports"
+  add_foreign_key "report_template_items", "report_items"
+  add_foreign_key "report_template_items", "report_templates"
+  add_foreign_key "reports", "users"
 end
