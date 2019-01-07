@@ -1,0 +1,2 @@
+class ReportTemplateItemsController < ApplicationController
+end

@@ -34,27 +34,37 @@ ActiveRecord::Schema.define(version: 2019_01_06_031138) do
     t.bigint "report_id"
     t.bigint "report_item_id"
     t.text "report_body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["report_id"], name: "index_report_details_on_report_id"
     t.index ["report_item_id"], name: "index_report_details_on_report_item_id"
   end
 
   create_table "report_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "report_item_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "report_template_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "report_template_id"
     t.bigint "report_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["report_item_id"], name: "index_report_template_items_on_report_item_id"
     t.index ["report_template_id"], name: "index_report_template_items_on_report_template_id"
   end
 
   create_table "report_templates", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "report_template_name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 

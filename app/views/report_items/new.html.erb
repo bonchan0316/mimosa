@@ -1,0 +1,25 @@
+<div class="users-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 users-new-container">
+        <h1 class="text-center text-white">Report_item create</h1>
+
+        <%= form_for @report_item do |f| %>
+
+          <div class="field">
+            <%= f.label :report_item_name %><br />
+            <%= f.text_field :report_item_name, autofocus: true %>
+          </div>
+
+          <% if logged_in? %>
+            <div class="actions">
+              <%= f.submit "Report_itemを作成" %>
+            </div>
+          <% end %>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

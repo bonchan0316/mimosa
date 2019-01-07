@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'report_templates/new'
+  get 'report_items/new'
   get 'family_users/new'
   get 'families/new'
   get 'users/index'
@@ -14,6 +16,11 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :families
   resources :family_users
+  resources :reports
+  resources :report_details
+  resources :report_items
+  resources :report_templates
+  resources :report_template_items
 
   root to: "top#index"
 
