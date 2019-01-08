@@ -7,13 +7,9 @@ class ReportItemsController < ApplicationController
     @report_item = ReportItem.new(report_item_params)
 
     if @report_item.save
-      #render :new, success: '登録が完了しました'
-      #Rails04 redirect_toを参照
-      flash.now[:success] = "登録が完了しました"
-      render :new
+      redirect_to new_report_item_path, success: "登録が完了しました"
     else
-      flash.now[:danger] = "登録に失敗しました"
-      render :new
+      redirect_to new_report_item_path, danger: "登録に失敗しました"
     end
   end
 

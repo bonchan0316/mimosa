@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'report_template_items/new'  
   get 'report_templates/new'
   get 'report_items/new'
   get 'family_users/new'

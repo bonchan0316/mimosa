@@ -8,11 +8,9 @@ class FamiliesController < ApplicationController
     @family.family_email = current_user.email
 
     if @family.save
-      redirect_to root_path, success: '登録が完了しました'
-      #Rails04 redirect_toを参照
+      redirect_to new_family_path, success: "登録が完了しました"
     else
-      flash.now[:danger] = "登録に失敗しました"
-      render :new
+      redirect_to new_family_path, danger: "登録に失敗しました"
     end
   end
 

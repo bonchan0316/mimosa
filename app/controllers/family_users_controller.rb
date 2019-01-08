@@ -6,9 +6,8 @@ class FamilyUsersController < ApplicationController
   def create
     family = Family.find_by(family_email: params[:family_email])
 
-    if family == nil
-      flash.now[:danger] = "登録に失敗しました（familyが見つかりません）"
-      render :new
+    if family.nil?
+      redirect_to new_family_user_path, danger: "登録に失敗しました（familyが見つかりません）"
     else
       @family_user = FamilyUser.new
       @family_user.family_id = family.id
@@ -17,10 +16,9 @@ class FamilyUsersController < ApplicationController
       @family_user.family_administrator = 1
 
       if @family_user.save
-        redirect_to root_path, success: '登録が完了しました'
+        redirect_to root_path, success: "登録が完了しました"
       else
-        flash.now[:danger] = "登録に失敗しました"
-        render :new
+        redirect_to new_family_user_path, danger: "登録に失敗しました"
       end
     end
   end
