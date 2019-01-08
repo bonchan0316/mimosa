@@ -1,0 +1,31 @@
+<div class="users-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 users-new-container">
+        <h1 class="text-center text-white">report_template_item create</h1>
+
+        <%= form_tag({controller: :report_template_items, action: :create},
+        {method: :post}) do %>
+
+          <div class="field">
+            <%= label_tag :report_template_name %><br />
+            <%= text_field_tag :report_template_name %>
+          </div>
+
+          <div class="field">
+            <%= label_tag :report_item_name %><br />
+            <%= text_field_tag :report_item_name %>
+          </div>
+
+          <% if logged_in? %>
+            <div class="actions">
+              <%= submit_tag "Report_template_itemを登録" %>
+            </div>
+          <% end %>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>
