@@ -3,4 +3,6 @@ class ReportDetail < ApplicationRecord
 
   belongs_to :report
   belongs_to :report_item
+
+  validates_uniqueness_of :report_item_id, scope: :report_id
 end
