@@ -1,0 +1,28 @@
+<div class="users-new-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-4 col-md-4 users-new-container">
+        <h1 class="text-center text-white">Report create</h1>
+
+        <%= form_for @report do |f|  %>
+
+          <div class="field">
+            <%= f.fields_for :report_bodys do |i| %>
+              <%= i.label :report_body %><br />
+              <%= i.text_field :report_body %>
+            <% end %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+          </div>
+
+          <% if logged_in? %>
+            <div class="actions">
+              <%= f.submit "Save",name:"commit" %>
+            </div>
+          <% end %>
+
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

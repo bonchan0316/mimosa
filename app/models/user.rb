@@ -23,6 +23,5 @@ class User < ApplicationRecord
 
   has_one :family, through: :family_user
   has_one :family_user
-  accepts_nested_attributes_for :family_user
   has_many :reports
 end
